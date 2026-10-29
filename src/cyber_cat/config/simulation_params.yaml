@@ -1,0 +1,19 @@
+# Parameter overrides for the Ignition Gazebo arena.
+#
+# Only topic names differ from the hardware defaults baked into the nodes:
+# the simulated marker is the same pink as the physical ball, so the HSV
+# thresholds and all control gains carry over unchanged. Hardware-tuned
+# timings live in launch/real_robot_launch.py.
+
+vision_processor:
+  ros__parameters:
+    image_topic: "/turtlebot/camera/image_raw"
+
+chase_controller:
+  ros__parameters:
+    cmd_vel_topic: "/model/turtlebot/cmd_vel"
+
+mission_executive:
+  ros__parameters:
+    # No Create 3 in simulation, so the light ring publisher is inert.
+    lightring_topic: "/sim/cmd_lightring"
